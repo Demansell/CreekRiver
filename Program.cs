@@ -30,7 +30,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
+// qwe
 app.UseHttpsRedirection();
 
 var summaries = new[]
