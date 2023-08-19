@@ -9,4 +9,20 @@ public class Reservation
     public UserProfile UserProfile { get; set; }
     public DateTime CheckinDate { get; set; }
     public DateTime CheckoutDate { get; set; }
+
+    public decimal? TotalCost
+    {
+        get
+        {
+            if (Campsite?.CampsiteType != null)
+            {
+                return Campsite.CampsiteType.FeePerNight * TotalNights + _baseReservationFee;
+            }
+            return null;
+        }
+    }
+
+    public int TotalNights => (CheckoutDate - CheckinDate).Days;
+
+    private static readonly decimal _reservationBaseFee = 10M;
 }
